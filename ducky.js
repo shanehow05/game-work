@@ -7,17 +7,54 @@ window.onload = function () {
   // ( 1. create the element
   //   2. add a class to the element
   //   3. append the element to the body )
+  // const tag = document.createElement('div');
+  // tag.classList.add = 'Duck';
+  // document.body.appendChild(tag);
+
+  // console.log(tag)
+
+  // const newDiv = document.createElement('div')
+  // newDiv.classList.add('duck')
+  // document.body.appendChild(newDiv)
+
+
+
 
   // 2. Next, use setInterval to toggle the "flap" class on the duck every 250 ms (1/4 second)
   // https://www.w3schools.com/jsref/met_win_setinterval.asp
+
+// function flap () {
+
+// }
+
+// function toggle() {
+//   const duck = document.querySelector(".duck")
+//   duck.classList.toggle('flap')
+// }
+
+// setInterval(toggle, 250)
+
+
+
+
+
 
   // 3. Now, let's move the duck using CSS "top" and "left". Create
   // a function `moveDuck` that takes a duck object as an argument and sets the
   // "top" and "left" CSS properties.
   // HINT: Use Math.random() * window.innerWidth    for "left"
   //       And Math.random() * window.innerHeight   for "top"
+  // function moveDuck(duck) {
+  //   duck.style.top = Math.random() * window.innerHeight
+  //   duck.style.left = Math.random()* window.innerWidth
+
+
+
+
 
   // 4. Try making the duck move to a different location every second (what did we use to do this several lines up??)
+
+  // setInterval(function () {moveDuck(newDiv)}, 1000)
 
   // 5. Congratulations! Move on to part 2!
 
@@ -27,13 +64,61 @@ window.onload = function () {
   //    a "function" called createDuck() that does everything in 1-4
   //    and "returns" the duck object
 
+
+  function createDuck () {
+    const newDiv = document.createElement("div");
+    newDiv.classList.add ("duck");
+    document.body.appendChild(newDiv);
+
+    function toggle() {
+      const duck = document.querySelector(".duck")
+      duck.classList.toggle('flap')
+    }
+    
+    setInterval(toggle, 250)
+
+    function moveDuck(duck) {
+      duck.style.top = Math.random() * window.innerHeight + 'px'
+      duck.style.left = Math.random()* window.innerWidth + 'px'
+    }
+      setInterval(function () {moveDuck(newDiv)}, 1000)
+
+      newDiv.addEventListener('click', function () {newDiv.classList.add('shot')
+    
+      setTimeout(function (){
+        newDiv.remove(); checkForWinner();
+      }, 1000)
+    })
+
+      return newDiv;
+
+
+    
+  }
+
+
   // 7. Now, let's create lots of ducks!  Use a "for" loop to create 5 ducks
   //    using our fancy new createDuck() function
+
+for (let i = 0; i < 5; i++) {
+  createDuck()
+}
+
+function checkForWinner () {
+  const duck = document.querySelectorAll(".duck")
+  if (duck.length == 0 ) {
+    alert("Winner!")
+  }
+}
+
+
 
   // 8. The ducks are overlapping.  Modify createDuck so each time
   //     it creates a duck, it appears in a random location
   // HINT: You may want to create a `randomPosition()` function that you can use
   //       to set the ducks' initial locations and in your `moveDuck()` function;
+
+
 
   // 9. Keep going! Move onto part 3!
 
@@ -44,10 +129,13 @@ window.onload = function () {
 
   // 12. After a duck has been clicked on, remove it from the DOM after
   //     a short delay (1 second) Hint Hint...use setTimeout
-  //     as for removing the element check out https://dzone.com/articles/removing-element-plain
+  //     as for removing the element check out https://dzone.com/articles/removing-element-plain  
+
+  
 
   // 13. Create a new function named checkForWinner() that reads the DOM
   //     to see if there are any ducks left. (How can we check the DOM for more than one element?, and how can we see how many elements we get back) If not, alert "YOU WIN!"
+  
 
   // 14. BONUS: The ducks are moving pretty erratically, can you think
   //     of a way to adjust the ducks speed based on how far needs to move?
@@ -56,4 +144,7 @@ window.onload = function () {
   //     direction the duck is flying and change the way the duck is facing
 
   // Done, you have accomplish another level of skill
-};
+  }
+
+  
+  
